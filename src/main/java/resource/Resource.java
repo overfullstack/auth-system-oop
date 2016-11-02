@@ -1,4 +1,12 @@
-package resource; /**
+/*
+ * Copyright (c) 2016, Gopal S Akshintala. 
+ * This source code is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
+ * http://creativecommons.org/licenses/by-sa/4.0/
+ */
+
+package resource;
+
+/**
  * Created by gakshintala on 4/15/16.
  */
 
@@ -14,13 +22,13 @@ public abstract class Resource {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return (obj instanceof Resource) && this.mResourceName.equals(((Resource) obj).mResourceName);
+    public int hashCode() {
+        return this.mResourceName.hashCode();
     }
 
     @Override
-    public int hashCode() {
-        return this.mResourceName.hashCode();
+    public boolean equals(Object obj) {
+        return (obj instanceof Resource) && this.mResourceName.equals(((Resource) obj).mResourceName);
     }
 
     // These methods hold business logic for various resources like dbs

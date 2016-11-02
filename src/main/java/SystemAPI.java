@@ -1,6 +1,12 @@
+/*
+ * Copyright (c) 2016, Gopal S Akshintala. 
+ * This source code is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
+ * http://creativecommons.org/licenses/by-sa/4.0/
+ */
+
 import resource.Resource;
-import role.Role;
 import role.Action;
+import role.Role;
 import user.User;
 
 import java.util.HashMap;
@@ -24,18 +30,18 @@ public class SystemAPI {
         }
     }
 
+    // A role is always given on a
+    public static void assignRoleOnResourceToUser(String userId, Role role, Resource resource) {
+        // Without exposing User's internals, delegate this task to user itself.
+        checkAndGetUser(userId).addRoleToResource(role, resource);
+    }
+
     private static User checkAndGetUser(String userId) {
         User user = mUsers.get(userId);
         if (user == null) {
             throw new NoSuchElementException("UserId: " + userId + " not found in the System");
         }
         return user;
-    }
-
-    // A role is always given on a 
-    public static void assignRoleOnResourceToUser(String userId, Role role, Resource resource) {
-        // Without exposing User's internals, delegate this task to user itself.
-        checkAndGetUser(userId).addRoleToResource(role, resource);
     }
 
     public static void unAssignRoleOnResourceToUser(String userId, Resource resource) {

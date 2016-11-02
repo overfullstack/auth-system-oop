@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2016, Gopal S Akshintala. 
+ * This source code is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
+ * http://creativecommons.org/licenses/by-sa/4.0/
+ */
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,6 +26,12 @@ public class SystemAPITest {
         prepareDummyResources();
     }
 
+    private void addUsersToSystem() {
+        for (int i = 0; i < 5; i++) {
+            SystemAPI.addUser(String.valueOf(i));
+        }
+    }
+
     private void prepareDummyResources() {
         int i = 0;
         mResources = new Resource[5];
@@ -37,12 +49,6 @@ public class SystemAPITest {
                 public void deleteFromResource() {
                 }
             };
-        }
-    }
-
-    private void addUsersToSystem() {
-        for (int i = 0; i < 5; i++) {
-            SystemAPI.addUser(String.valueOf(i));
         }
     }
 

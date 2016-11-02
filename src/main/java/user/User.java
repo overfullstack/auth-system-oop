@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2016, Gopal S Akshintala. 
+ * This source code is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
+ * http://creativecommons.org/licenses/by-sa/4.0/
+ */
+
 package user;
 
 import resource.Resource;
@@ -22,17 +28,13 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return ((obj instanceof User)) && this.mUserId.equals(((User) obj).mUserId);
-    }
-
-    @Override
     public int hashCode() {
         return this.mUserId.hashCode();
     }
 
-    public void addRoleToResource(Role role, Resource resource) {
-        mRoleOnResourceMap.put(resource, role);
+    @Override
+    public boolean equals(Object obj) {
+        return ((obj instanceof User)) && this.mUserId.equals(((User) obj).mUserId);
     }
 
     public void unAssignRoleToResource(Resource resource) {
@@ -41,6 +43,10 @@ public class User {
 
     public void modifyRoleToResource(Role role, Resource resource) {
         this.addRoleToResource(role, resource);
+    }
+
+    public void addRoleToResource(Role role, Resource resource) {
+        mRoleOnResourceMap.put(resource, role);
     }
 
     public boolean hasAccess(Action action, Resource resource) {
